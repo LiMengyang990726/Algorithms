@@ -1,0 +1,69 @@
+/*
+You are given two non-empty linked lists representing two non-negative integers. The digits are stored in reverse order and each of their nodes contain a single digit. Add the two numbers and return it as a linked list.
+
+You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+
+Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+Output: 7 -> 0 -> 8
+Explanation: 342 + 465 = 807.
+*/
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        int[] input1 = new int[]{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+        int[] input2 = new int[]{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
+        int input1=0;
+        int input2=0;
+        int counter1=0;
+        int counter2=0;
+        
+        while(l1!=null){
+            input1[counter1]=l1.getValue();
+            l1 = l1.next();
+            counter1++;
+        }
+        
+        while(l2!=null){
+            input2[counter2]=l2.getValue();
+            l2 = l2.next();
+            counter2++;
+        }
+        
+        for(int count = 0; count < counter1; count++){
+            input1+=input1[count]*Math.pow(10,(counter1-1-count));
+        }
+        
+        for(int count = 0; count < counter2; count++){
+            input2+=input2[count]*Math.pow(10,(counter2-1-count));
+        }
+        
+        int result = input1+input2;
+        ListNode l3;
+        while((result/10) >= 0){
+            int temp = result%10;
+            l3 = new ListNode(temp);
+            l3 = l3.next();
+            result = result/10;
+        }
+    }
+    
+    public class ListNode{
+        int val;
+        ListNode next;
+        
+        public ListNode(int val){
+            this.val = val;   
+        }
+        
+        public int getValue(){
+            return val;    
+        }
+        
+        public void setValue(int val){
+            this.val = val;
+        }
+        
+        public ListNode next(){
+            return next;
+        }
+    }
+}
