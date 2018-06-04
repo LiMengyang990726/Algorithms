@@ -1,0 +1,132 @@
+/*
+There are two sorted arrays nums1 and nums2 of size m and n respectively.
+
+Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
+
+Example 1:
+nums1 = [1, 3]
+nums2 = [2]
+
+The median is 2.0
+Example 2:
+nums1 = [1, 2]
+nums2 = [3, 4]
+
+The median is (2 + 3)/2 = 2.5
+*/
+
+/*
+The solution got some problems in the indices and will be fixed soon.
+*/
+
+class Solution {
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int arrayLength1 = nums1.length;
+        int arrayLength2 = nums2.length;
+        int totalLength = arrayLength1+arrayLength2;
+        
+        if(totalLength%2 != 0){
+            if(arrayLength1 > arrayLength2){
+                int counter1 = 0;
+                int counter2 =(arrayLength1+arrayLength2-3)/2;
+                boolean flag = true;
+                while (flag && counter1<=(arrayLength2-2) && counter2<=(arrayLength1-2)){
+                    if(nums2[counter1]<=nums1[counter2+1] && nums1[counter2]<=nums2[counter1+1]){
+                        flag = true;
+                    }else{
+                        flag = false;
+                    }
+                    counter1++;
+                    counter2 = ((arrayLength1+arrayLength2-3)/2 - counter1);
+                }
+                if(nums1[counter2] > nums2[counter1]){
+                    return nums1[counter2];
+                }else{
+                    return nums2[counter1];
+                } 
+            }else{
+                int counter1 = 0;
+                int counter2 = (arrayLength1+arrayLength2-3)/2;
+                boolean flag = true;
+                while(flag && counter1<=(arrayLength1-2) && counter2<=(arrayLength2-2)){
+                    if(nums1[counter1]<=nums2[counter2+1] && nums2[counter2]<=nums1[counter1+1]){
+                        flag = true;
+                    }else{
+                        flag = false;
+                    }
+                    counter1++;
+                    counter2 = ((arrayLength1+arrayLength2-3)/2 - counter1);
+                }
+                if(nums2[counter2] > nums1[counter1]){
+                    return nums2[counter2];  
+                }else{
+                    return nums1[counter1];
+                }
+            }
+        }else{
+            if(arrayLength1 > arrayLength2){
+                int counter1 = 0;
+                int counter2 =(arrayLength1+arrayLength2-4)/2;
+                boolean flag = true;
+                while (flag && counter1<=(arrayLength2-2) && counter2<=(arrayLength1-2)){
+                    if(nums2[counter1]<=nums1[counter2+1] && nums1[counter2]<=nums2[counter1+1]){
+                        flag = true;
+                    }else{
+                        flag = false;
+                    }
+                    if((counter1+1)<=(arrayLength2-1)){
+                        counter1++;
+                    }
+                    if(counter2 != 0){
+                        counter2 = ((arrayLength1+arrayLength2-4)/2 - counter1);
+                    }
+                }
+                
+                int left,right;
+                if(nums1[counter2] > nums2[counter1]){
+                    left = nums1[counter2];
+                }else{
+                    left = nums2[counter1];
+                }
+                if(nums1[counter2+1] < nums2[counter1+1]){
+                    right = nums1[counter2+1];
+                }else{
+                    right = nums2[counter1+1];
+                }
+                
+                return (left+right)/2;
+            }else{
+                int counter1 = 0;
+                int counter2 = (arrayLength1+arrayLength2-4)/2;
+                boolean flag = true;
+                while(flag && counter1<=(arrayLength1-2) && counter2<=(arrayLength2-2)){
+                    if(nums1[counter1]<=nums2[counter2] && nums2[counter2]<=nums1[counter1+1]){
+                        flag = true;
+                    }else{
+                        flag = false;
+                    }
+                    if((counter1+1) <= (arrayLength1-1)){
+                        counter1++; 
+                    }
+                    if(counter2 != 0){
+                        counter2 = ((arrayLength1+arrayLength2-4)/2 - counter1);
+                    }
+                }
+                
+                int left,right;
+                if(nums1[counter1] > nums2[counter2]){
+                    left = nums1[counter2];
+                }else{
+                    left = nums2[counter2];
+                }
+                if(nums1[counter1+1] < nums2[counter2+1]){
+                    right = nums1[counter1+1];
+                }else{
+                    right = nums2[counter2+1];
+                }
+                
+                return (left+right)/2;
+            }
+        }
+    }
+}
