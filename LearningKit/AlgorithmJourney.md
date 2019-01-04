@@ -27,6 +27,19 @@
 
     - Reduce the duplicated work.
   - Write the code. Pre-write some fixed stuffs first
+- Time complexity: CPU -- 10<sup>8</sup>operations per second
+- Space complexity:
+  - 32bit signed integer(`int`): 9 decimal digits
+  - 64bit signed integer(`long long`): 18 decimal digits
+  - 32bit unsigned integer(`unsigned int`): 9 decimal digits
+  - 64bit unsigned integer(`unsigned long long`): 19 decimal digits
+  - To store integer >= 2<sup>64</sup>, use Big Integer Technique
+- Code Testing techniques
+  - Test the output format: Using `diff` in UNIX
+  - Test the variable initialization when there are multiple test cases: Input two identical test cases
+  - Test the tricky corner cases: N = 0, 1, boundary values
+  - Test the large cases
+  - Test with extra blank spaces(rare)
 ------------------------------
 ##Some conventions
 - `define *_CRT_SECURE_NO_DEPRECATE` for ingoring warnings
