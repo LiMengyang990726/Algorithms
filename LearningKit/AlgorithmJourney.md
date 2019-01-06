@@ -85,7 +85,35 @@ int main(){
 ## CPP advanced properties
 - :: operator is a scope resolution operator
 - -> operator is to dereference the pointer first and then get a specific field of the content
+- Read in multiple test cases:
 
+```
+// Given number of test cases
+int TC;
+scanf("%d", &TC);
+while(TC--){
+}
+
+// Given stopping critiria e.g. when both are zeros
+int a, b;
+while(scanf("%d %d",&a,&b),(a||b)){
+
+}
+
+// Given EOF to stop
+int a,b;
+while(scanf("%d %d",&a,&b) == 2){
+
+}
+while(scanf("%d %d",&a,&b) != EOF){
+
+}
+// With case numbers
+int a, b, c = 1;
+while(scanf("%d %d",&a,&b) != EOF){
+  printf("Case%d",c++);
+}
+```
 ----------------------------
 ## Common type of errors
 - Some features only C++11 has, like `auto`.
