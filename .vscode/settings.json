@@ -13,6 +13,12 @@
         "algorithm": "cpp",
         "charconv": "cpp",
         "cuchar": "cpp",
-        "cstdint": "cpp"
+        "cstdint": "cpp",
+        "iosfwd": "cpp",
+        "ostream": "cpp",
+        "string": "cpp",
+        "map": "cpp",
+        "vector": "cpp",
+        "utility": "cpp"
     }
 }
